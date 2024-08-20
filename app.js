@@ -68,6 +68,18 @@
 const display = document.getElementById("display");
 
 function pressbtn(inp) {
+  const operators = ['+', '-', '*', '/'];
+
+  // Prevent consecutive operators
+  if (operators.includes(inp)) {
+    const lastChar = display.value.slice(-1);
+    
+    // If last character is an operator, do nothing
+    if (operators.includes(lastChar)) {
+      return;
+    }
+  }
+
   display.value += inp;
 }
 
