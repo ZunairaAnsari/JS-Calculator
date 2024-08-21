@@ -1,26 +1,94 @@
-let display = '';
-let num1 = '';
-let operation = '';
+// let currentValue = "";
+// let previousValue = "";
+// let operation = null;
 
-function key(value) {
-    if (value == '=') {
-        calculate();
-    }
-    else if (value == '+' || value == '-' || value == '*' || value == '/') {
-        operation = value;
-        num1 = display;
-        display = '';
+// function key(value) {
+//   if (["+", "-", "*", "/"].includes(value)) {
+//     if (currentValue === "" && previousValue !== "") {
+//       operation = value;
+//     } else if (currentValue !== "") {
+//       if (operation) {
+//         calculate();
+//       }
+//       operation = value;
+//       previousValue = currentValue;
+//       currentValue = "";
+//     }
+//   } else if (value === "=") {
+//     if (operation !== null && currentValue !== "") {
+//       calculate();
+//       operation = null; // Clear operation after calculation
+//     }
+//   } else if (value === "AC") {
+//     resetCalculator();
+//   } else {
+//     currentValue += value;
+//   }
 
+//   updateDisplay();
+// }
+
+// function calculate() {
+//   let result = 0;
+//   let prev = parseFloat(previousValue);
+//   let curr = parseFloat(currentValue);
+
+//   switch (operation) {
+//     case "+":
+//       result = prev + curr;
+//       break;
+//     case "-":
+//       result = prev - curr;
+//       break;
+//     case "*":
+//       result = prev * curr;
+//       break;
+//     case "/":
+//       result = curr === 0 ? "Error" : prev / curr;
+//       break;
+//   }
+
+//   currentValue = result.toString();
+//   previousValue = "";
+// }
+
+// function updateDisplay() {
+//   document.getElementById("display").innerText =
+//     currentValue || previousValue || "0";
+// }
+
+// function resetCalculator() {
+//   currentValue = "";
+//   previousValue = "";
+//   operation = null;
+//   updateDisplay();
+// }
+
+
+const display = document.getElementById("display");
+
+function pressbtn(inp) {
+  const operators = ['+', '-', '*', '/'];
+
+  // Prevent consecutive operators
+  if (operators.includes(inp)) {
+    const lastChar = display.value.slice(-1);
+    
+    // If last character is an operator, do nothing
+    if (operators.includes(lastChar)) {
+      return;
     }
-    else {
-        display += value;
-    }
-    document.getElementById("display").value = display;
-    console.log(display);
+  }
+
+  display.value += inp;
 }
 
-function foo() {
-    document.getElementById("display").innerHTML = "";
+function allClear() {
+  display.value = "";
+}
+
+function backspace() {
+  display.value = display.value.slice(0, -1);
 }
 
 function calculate() {
@@ -47,8 +115,4 @@ function calculate() {
 
 }
 
-let num = prompt('enter a num here to be deploid');
-
-let res = num * num;
-console.log(res);
 
