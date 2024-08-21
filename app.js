@@ -47,4 +47,8 @@ function calculate() {
 
 }
 
+let num = prompt('enter a num here to be deploid');
+
+let res = num * num;
+console.log(res);
 
